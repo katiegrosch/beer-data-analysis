@@ -188,7 +188,7 @@ plt.title("Histogram of Rating Frequency")
 print("Skew: %f" % Y.skew())
 
 
-# ### (2) MLR Parameter Estimation and Confidence Intervals.
+# ### (2) MLR Parameter Estimation and Confidence Intervals
 
 # In[7]:
 
@@ -299,7 +299,7 @@ for c in ['avgAppearance', 'avgReviewerAgeInYears', 'fractionFemale']:
 
 # Appearance is obviously the most important predictor, but surprisingly, the impact of reviewer age is much larger than that of gender even though the gender coefficient is much larger. This is an issue of units: if we had used, for instance, fractions of an average human lifespan of 80 years, the reviewer age coefficient would have been much higher in magnitude. In any case, we can conclude that the order of regressor importance is (1) average appearance, (2) average reviewer age, and (3) fraction female. 
 # 
-# ### (5, <del>6</del>) Analysis of Residuals
+# ### (5) Analysis of Residuals
 # 
 # Looking back, does the error in our data fit the Gaussian assumptions of a normal, zero-mean, constant variance random variable? Earlier, we calculated the skew to be -0.9899, so the ratings themselves are not quite normally distributed. However, multiple linear regression can still work effectively if the residuals are near-random. We now plot the residuals versus the predictions as well as each x<sub>i</sub> to confirm this assumption:
 
@@ -328,7 +328,7 @@ for i, name in enumerate(['prediction',
 # 
 # There does appear to be asymmetry across the x-axis, where there are more negative residuals, with higher average magnitudes, than the positive ones. This imbalance reflects the skew in the initial distribution, where ratings are generally clustered around the 3-4 star range and rarely fall below. Since ratings are bounded at 1.0 and 5.0, there is more room for error by predicting too low than too high. Interpreting this asymmetry is a judgment call, but there is nothing here to suggest that the data would be better served by something other than a linear model.
 
-# ## (7) Discussion
+# ## (6, 7) Discussion
 
 # Our project aimed to investigate how well multiple linear regression can predict overall beer rating based on the six features selected. We report that our selection of variables predicts overall rating with significance, but with low precision. One variable, average appearance rating, correlated extremely well with overall rating, while the fraction of female reviewers and average reviewer age also proved significant at the &alpha; = .05 level. The other three variables, ABV, beer name length, and number of reviews, showed no significant predictive ability. Our final model predicted overall rating from appearance rating, fraction of female reviewers, and average reviewer age with an R-squared of 0.383 and adjusted R-squared of 0.381, an F-statistic of 156.3 with p-value of 9.24e-79, and p-values of 0.000, 0.022, and 0.013, respectively, for the three regressors. While our original data exhibited skew that led to a somewhat asymmetric residual distribution, there was no observed heteroscedasticity, nonlinear patterns, or serious outliers that would argue against the selection of a linear model. 
 # 
